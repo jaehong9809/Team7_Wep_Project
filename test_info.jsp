@@ -42,6 +42,8 @@
 	    out.print("<tr>");
 	    out.print("<th> 번 호 </th>");
 	    out.print("<th> 약 국 </th>");
+	    
+	    
 	    out.print("</tr>");
 	    
 	    for(int temp=0; temp<item.getLength(); temp++)
