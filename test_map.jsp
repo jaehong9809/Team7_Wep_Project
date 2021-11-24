@@ -38,6 +38,7 @@
 	    	
 	    	NodeList Lat=doc.getElementsByTagName("wgs84Lat");
 	    	NodeList Lon=doc.getElementsByTagName("wgs84Lon");
+	    	NodeList name=doc.getElementsByTagName("dutyName");
 	    	out.print("<div id='map' style='width:1000px;height:800px;'></div>");
 			out.print("<script type=\"text/javascript\" src=\"//dapi.kakao.com/v2/maps/sdk.js?appkey=3b6d82765fcafd32b7989cbb031604fd\"></script>");
 			out.print("<script>");
@@ -53,7 +54,8 @@
 				out.print("var markerPosition  = new kakao.maps.LatLng("+Double.valueOf(Lat.item(i).getFirstChild().getTextContent())+","+Double.valueOf(Lon.item(i).getFirstChild().getTextContent())+"); ");
 				out.print("var marker = new kakao.maps.Marker({");
 				out.print("	map:map,");
-				out.print("  position: markerPosition");
+				out.print("  position: markerPosition ,");
+				out.print(" title : '"+name.item(i).getFirstChild().getTextContent()+"'");
 				out.print("});");
 			}
 			out.print("marker.setMap(map)");

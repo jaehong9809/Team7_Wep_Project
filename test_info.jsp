@@ -53,8 +53,45 @@
 	    	Element ele=(Element)node;
 	    	out.print("<tr><td>"+temp+"</td>\n");
 	    	
-	    	out.print("<td>"+ele.getElementsByTagName("dutyAddr").item(0).getTextContent()+"<br>");
-	    	out.print(ele.getElementsByTagName("dutyName").item(0).getTextContent()+"<br>");
+	    	
+	    	
+	    	String ygaddr=ele.getElementsByTagName("dutyAddr").item(0).getTextContent();
+	    	
+	    	
+	    	String ygname=ele.getElementsByTagName("dutyName").item(0).getTextContent();
+	    	
+	    	
+	    	String ygtel=ele.getElementsByTagName("dutyTel1").item(0).getTextContent();
+	    	String ygmon=ele.getElementsByTagName("dutyTime1s").item(0).getTextContent()+"~"+ele.getElementsByTagName("dutyTime1c").item(0).getTextContent();
+	    	String ygtue=ele.getElementsByTagName("dutyTime2s").item(0).getTextContent()+"~"+ele.getElementsByTagName("dutyTime2c").item(0).getTextContent();
+	    	String ygwed=ele.getElementsByTagName("dutyTime3s").item(0).getTextContent()+"~"+ele.getElementsByTagName("dutyTime3c").item(0).getTextContent();
+	    	String ygthu=ele.getElementsByTagName("dutyTime4s").item(0).getTextContent()+"~"+ele.getElementsByTagName("dutyTime4c").item(0).getTextContent();
+	    	String ygfri=ele.getElementsByTagName("dutyTime5s").item(0).getTextContent()+"~"+ele.getElementsByTagName("dutyTime5c").item(0).getTextContent();
+	    	String ygsat="";
+	    	String ygsun="";
+	    	String yglat=ele.getElementsByTagName("wgs84Lat").item(0).getTextContent();
+	    	String yglon=ele.getElementsByTagName("wgs84Lon").item(0).getTextContent();
+	    	if(ele.getElementsByTagName("dutyTime6s").item(0)!=null)
+	    	{
+	    		if(ele.getElementsByTagName("dutyTime7s").item(0)!=null){
+	    			ygsat=ele.getElementsByTagName("dutyTime6s").item(0).getTextContent()+"~"+ele.getElementsByTagName("dutyTime6c").item(0).getTextContent();
+	    			ygsun=ele.getElementsByTagName("dutyTime7s").item(0).getTextContent()+"~"+ele.getElementsByTagName("dutyTime7c").item(0).getTextContent();
+	    		}
+	    		else{
+	    			ygsat=ele.getElementsByTagName("dutyTime6s").item(0).getTextContent()+"~"+ele.getElementsByTagName("dutyTime6c").item(0).getTextContent();
+	    		}
+	    	}
+	    	else{
+	    		if(ele.getElementsByTagName("dutyTime7s").item(0)!=null)
+	    		{
+	    			ygsun=ele.getElementsByTagName("dutyTime7s").item(0).getTextContent()+"~"+ele.getElementsByTagName("dutyTime7c").item(0).getTextContent();
+	    		}
+	    	}
+	    	out.print("<td>");
+	    %>
+	    <a href="info_good.jsp?addr=<%=ygaddr%>&name=<%=ygname%>&tel=<%=ygtel%>&mon=<%=ygmon%>&tue=<%=ygtue%>&wed=<%=ygwed%>&thu=<%=ygthu%>&fri=<%=ygfri%>&sat=<%=ygsat%>&sun=<%=ygsun%>&lat=<%=yglat%>&lon=<%=yglon%>"><%=ygname+"<br>"%></a>
+	    <% 
+	    	out.print(ele.getElementsByTagName("dutyAddr").item(0).getTextContent()+"<br>");
 	    	out.print(ele.getElementsByTagName("dutyTel1").item(0).getTextContent()+"<br>");
 	    	out.print("월 : "+ele.getElementsByTagName("dutyTime1s").item(0).getTextContent()+"~"+ele.getElementsByTagName("dutyTime1c").item(0).getTextContent()+"<br>");
 	    	out.print("화 : "+ele.getElementsByTagName("dutyTime2s").item(0).getTextContent()+"~"+ele.getElementsByTagName("dutyTime2c").item(0).getTextContent()+"<br>");
