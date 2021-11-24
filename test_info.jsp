@@ -53,15 +53,14 @@
 	    	Element ele=(Element)node;
 	    	out.print("<tr><td>"+temp+"</td>\n");
 	    	
-	    	out.print("<td>"+ele.getElementsByTagName("dutyAddr").item(0).getTextContent()+"<br>");
+	    	
 	    	
 	    	String ygaddr=ele.getElementsByTagName("dutyAddr").item(0).getTextContent();
 	    	
-	    	out.print(ele.getElementsByTagName("dutyName").item(0).getTextContent()+"<br>");
 	    	
 	    	String ygname=ele.getElementsByTagName("dutyName").item(0).getTextContent();
 	    	
-	    	out.print(ele.getElementsByTagName("dutyTel1").item(0).getTextContent()+"<br>");
+	    	
 	    	String ygtel=ele.getElementsByTagName("dutyTel1").item(0).getTextContent();
 	    	String ygmon=ele.getElementsByTagName("dutyTime1s").item(0).getTextContent()+"~"+ele.getElementsByTagName("dutyTime1c").item(0).getTextContent();
 	    	String ygtue=ele.getElementsByTagName("dutyTime2s").item(0).getTextContent()+"~"+ele.getElementsByTagName("dutyTime2c").item(0).getTextContent();
@@ -88,9 +87,12 @@
 	    			ygsun=ele.getElementsByTagName("dutyTime7s").item(0).getTextContent()+"~"+ele.getElementsByTagName("dutyTime7c").item(0).getTextContent();
 	    		}
 	    	}
+	    	out.print("<td>");
 	    %>
 	    <a href="info_good.jsp?addr=<%=ygaddr%>&name=<%=ygname%>&tel=<%=ygtel%>&mon=<%=ygmon%>&tue=<%=ygtue%>&wed=<%=ygwed%>&thu=<%=ygthu%>&fri=<%=ygfri%>&sat=<%=ygsat%>&sun=<%=ygsun%>&lat=<%=yglat%>&lon=<%=yglon%>"><%=ygname+"<br>"%></a>
 	    <% 
+	    	out.print(ele.getElementsByTagName("dutyAddr").item(0).getTextContent()+"<br>");
+	    	out.print(ele.getElementsByTagName("dutyTel1").item(0).getTextContent()+"<br>");
 	    	out.print("월 : "+ele.getElementsByTagName("dutyTime1s").item(0).getTextContent()+"~"+ele.getElementsByTagName("dutyTime1c").item(0).getTextContent()+"<br>");
 	    	out.print("화 : "+ele.getElementsByTagName("dutyTime2s").item(0).getTextContent()+"~"+ele.getElementsByTagName("dutyTime2c").item(0).getTextContent()+"<br>");
 	    	out.print("수 : "+ele.getElementsByTagName("dutyTime3s").item(0).getTextContent()+"~"+ele.getElementsByTagName("dutyTime3c").item(0).getTextContent()+"<br>");

@@ -26,7 +26,6 @@
 		Double la=Double.parseDouble(lat);
 		
 		Double lo=Double.parseDouble(lon);
-		out.print(la+"<br>"+lo);
 	%>
 	<table border="2" >
 	<tr align="center">
@@ -87,7 +86,7 @@
 		var lon=126.570667;
 		var map=new kakao.maps.Map(container, options);
 		
-		var markerPosition  = new kakao.maps.LatLng(33.450701, 126.570667); 
+		var markerPosition  = new kakao.maps.LatLng(<%=la%>, <%=lo%>); 
 
 		// 마커를 생성합니다
 		var marker = new kakao.maps.Marker({
@@ -97,8 +96,8 @@
 		// 마커가 지도 위에 표시되도록 설정합니다
 		marker.setMap(map);
 
-		var iwContent = 'hi',
-		    iwPosition = new kakao.maps.LatLng(33.450701, 126.570667); //인포윈도우 표시 위치입니다
+		var iwContent = '<%=name%>',
+		    iwPosition = new kakao.maps.LatLng(<%=la%>, <%=lo%>); //인포윈도우 표시 위치입니다
 
 		// 인포윈도우를 생성합니다
 		var infowindow = new kakao.maps.InfoWindow({
