@@ -8,13 +8,24 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
-		<form method="post">
-		<p> 주소(시도)  :<input type="text" name="addr1">
-		<p> 주소(시군구) :<input type="text" name="addr2">
-		<p> <input type="submit" value="찾기"> 
+<body >
+	<jsp:include page="header.jsp"></jsp:include>
+	<div style="height:40%; width:100%; marin:0 auto">
+	
+	<div style="height:140px;width:70%;border:3px solid #04B4AE;margin:0 auto;margin-top:15px;">
+	<form method="post" style="height:100%;">
+	
+		<div style="height:100%; width:350px;float:left;margin-left:20px;margin-top:15px;">
+			<input type="text" style="width:300px;height:40px;margin-bottom:10px;border-radius: 0.5em;" placeholder="주소(시도)" name="addr1">
+			<input type="text" style="width:300px;height:40px;border-radius: 0.5em;" placeholder="주소(시군구)" name="addr2">
+		</div>
+		
+	
+		<input style="height:100px;width:100px;margin-top:15px;background-color:#04B4AE;border-radius: 0.5em;" type="submit" value="찾기">
+		
 	</form>
-
+	</div>
+	</div>
 	<%
 		request.setCharacterEncoding("utf-8");
 		String addr1=request.getParameter("addr1");
@@ -39,7 +50,9 @@
 	    	NodeList Lat=doc.getElementsByTagName("wgs84Lat");
 	    	NodeList Lon=doc.getElementsByTagName("wgs84Lon");
 	    	NodeList name=doc.getElementsByTagName("dutyName");
-	    	out.print("<div id='map' style='width:1000px;height:800px;'></div>");
+	    %>
+	    <div id='map' style='width:70%;height:800px;margin-left:15%;margin-top:10px;border: 3px solid #04B4AE;'></div>
+	    <%
 			out.print("<script type=\"text/javascript\" src=\"//dapi.kakao.com/v2/maps/sdk.js?appkey=3b6d82765fcafd32b7989cbb031604fd\"></script>");
 			out.print("<script>");
 			out.print("var container=document.getElementById('map');");
