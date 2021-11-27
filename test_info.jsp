@@ -9,13 +9,23 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form method="post">
-		<p> 주소(시도)  :<input type="text" name="addr1">
-		<p> 주소(시군구) :<input type="text" name="addr2">
-		<p> <input type="submit" value="찾기"> 
+	<jsp:include page="header.jsp"></jsp:include>
+	<div style="height:40%; width:100%; marin:0 auto">
+	
+	<div style="height:140px;width:70%;border:3px solid #04B4AE;margin:0 auto;margin-top:15px;">
+	<form method="post" style="height:100%;">
+	
+		<div style="height:100%; width:350px;float:left;margin-left:20px;margin-top:15px;">
+			<input type="text" style="width:300px;height:40px;margin-bottom:10px;border-radius: 0.5em;" placeholder="주소(시도)" name="addr1">
+			<input type="text" style="width:300px;height:40px;border-radius: 0.5em;" placeholder="주소(시군구)" name="addr2">
+		</div>
+		
+	
+		<input style="height:100px;width:100px;margin-top:15px;background-color:#04B4AE;border-radius: 0.5em;" type="submit" value="찾기">
+		
 	</form>
-	
-	
+	</div>
+	</div>
 	<%
 	request.setCharacterEncoding("utf-8");
 	String addr1=request.getParameter("addr1");
@@ -38,7 +48,11 @@
 	    doc.getDocumentElement().normalize();
 	    
 	    NodeList item=doc.getElementsByTagName("item");
-	    out.print("<table border=\"1\">");
+	    %>
+	 <div style="width:70%;margin-left:15%;margin-top:10px;border-radius: 0.5em;">
+	 <table border="1" style="width:100%; border:3px solid #04B4AE;border-radius: 0.5em;">
+	    <% 
+	    
 	    out.print("<tr>");
 	    out.print("<th> 번 호 </th>");
 	    out.print("<th> 약 국 </th>");
@@ -51,7 +65,8 @@
 	    	Node node=item.item(temp);
 	    		
 	    	Element ele=(Element)node;
-	    	out.print("<tr><td>"+temp+"</td>\n");
+	    	int num=temp+1;
+	    	out.print("<tr><td align=\"center\">"+num+"</td>\n");
 	    	
 	    	
 	    	
@@ -89,7 +104,7 @@
 	    	}
 	    	out.print("<td>");
 	    %>
-	    <a href="info_good.jsp?addr=<%=ygaddr%>&name=<%=ygname%>&tel=<%=ygtel%>&mon=<%=ygmon%>&tue=<%=ygtue%>&wed=<%=ygwed%>&thu=<%=ygthu%>&fri=<%=ygfri%>&sat=<%=ygsat%>&sun=<%=ygsun%>&lat=<%=yglat%>&lon=<%=yglon%>"><%=ygname+"<br>"%></a>
+	    <a href="info_good.jsp?addr=<%=ygaddr%>&name=<%=ygname%>&tel=<%=ygtel%>&mon=<%=ygmon%>&tue=<%=ygtue%>&wed=<%=ygwed%>&thu=<%=ygthu%>&fri=<%=ygfri%>&sat=<%=ygsat%>&sun=<%=ygsun%>&lat=<%=yglat%>&lon=<%=yglon%>" style="font-size:1.5em;color:red;"><%=ygname+"<br>"%></a>
 	    <% 
 	    	out.print(ele.getElementsByTagName("dutyAddr").item(0).getTextContent()+"<br>");
 	    	out.print(ele.getElementsByTagName("dutyTel1").item(0).getTextContent()+"<br>");
@@ -122,5 +137,6 @@
 	}
 	
 	%>
+	</div>
 </body>
 </html>
