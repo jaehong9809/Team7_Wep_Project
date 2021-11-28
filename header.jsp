@@ -10,10 +10,11 @@
 <%
 	String id=(String)session.getAttribute("userID");
 %>
-<div style="background-color:white; margin:5px; border:3px solid #04B4AE; height:60px;border-radius: 2em;">
+<div style="height:60px;width:100%;">
+<div style="background-color:white; margin:5px; border:3px solid #04B4AE; height:60px;width:70%;border-radius: 1em;margin:0 auto;">
 	<div style="float : left;margin:5px;margin-left:20px;">
 	<a href="./main.jsp" height="5" width="10">
-		<img src="images/yakgookimage.png" alt="약국 클릭" height="50" width="50">	
+		<img src="yakgookimage.png" alt="약국 클릭" height="50" width="50">	
 	</a>
 	</div >
 	<div style="float :left;margin:5px;margin-left:20px">
