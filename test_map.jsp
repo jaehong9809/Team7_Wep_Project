@@ -8,12 +8,26 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<script type="text/javascript">
+	function checkForm(){
+		var str=document.ad.addr2.value;
+		for(var i=0; i<str.length; i++){
+			var ch=str.charAt(i);
+			if(ch==' '){
+				alert("띄어쓰기를 쓰지마시오\n예)\n 안양시 동안구 (X)\n 안양시동안구(O)");
+				return;
+			}
+		}
+		
+		
+	}
+</script>
 <body >
 	<jsp:include page="header.jsp"></jsp:include>
 	<div style="height:40%; width:100%; marin:0 auto">
 	
 	<div style="height:140px;width:70%;border:3px solid #04B4AE;margin:0 auto;margin-top:15px;">
-	<form method="post" style="height:100%;">
+	<form name="ad" method="post" style="height:100%;" >
 	
 		<div style="height:100%; width:350px;float:left;margin-left:20px;margin-top:15px;">
 			<input type="text" style="width:300px;height:40px;margin-bottom:10px;border-radius: 0.5em;" placeholder="주소(시도)" name="addr1">
@@ -21,7 +35,7 @@
 		</div>
 		
 	
-		<input style="height:100px;width:100px;margin-top:15px;background-color:#04B4AE;border-radius: 0.5em;" type="submit" value="찾기">
+		<input style="height:100px;width:100px;margin-top:15px;background-color:#04B4AE;border-radius: 0.5em;" type="submit" value="찾기" onclick="checkForm()">
 		
 	</form>
 	</div>
@@ -30,7 +44,13 @@
 		request.setCharacterEncoding("utf-8");
 		String addr1=request.getParameter("addr1");
 		String addr2=request.getParameter("addr2");
-		if(addr1!=null&&addr2!=null)
+		int isok=1;
+		if(addr1!=null&&addr2!=null){
+			if(addr2.indexOf(" ")!=-1){
+				isok=0;	
+			}	
+		}
+		if(addr1!=null&&addr2!=null&&isok==1)
 		{
 			StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/B552657/ErmctInsttInfoInqireService/getParmacyListInfoInqire"); /*URL*/
 		    urlBuilder.append("?" + URLEncoder.encode("serviceKey","UTF-8") + "=em%2F6HSJvjrO6USO6D2UZOGAwohly1xbEeY%2BCMXD1T7Nwuj1RMb8Xq85qVEia0NWd9LwhDEYQgEg9vjoO%2FgT8Kg%3D%3D"); /*Service Key*/
